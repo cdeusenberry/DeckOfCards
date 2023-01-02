@@ -1,56 +1,59 @@
 import React from 'react';
-import { Switch, Text, View } from 'react-native';
+import {Switch, Text, View} from 'react-native';
 
-import { Card, SuitsEnum } from '../lib';
+import {Card, SuitsFlagEnum, suitsFlagToString} from '../lib';
 
-const Toggles = ({ cards, isSortEnabled, setIsSortEnabled, filterSuits, toggleSuit }: {
-    cards: Card[],
-    isSortEnabled: boolean,
-    setIsSortEnabled: (val: boolean) => void,
-    filterSuits: SuitsEnum,
-    toggleSuit: (val: SuitsEnum) => void,
+const Toggles = ({
+  cards,
+  isSortEnabled,
+  setIsSortEnabled,
+  filterSuits,
+  toggleSuit,
+}: {
+  cards?: Card[];
+  isSortEnabled: boolean;
+  setIsSortEnabled: (val: boolean) => void;
+  filterSuits: SuitsFlagEnum;
+  toggleSuit: (val: SuitsFlagEnum) => void;
 }) => {
-    if (cards.length < 1) {
-        return null;
-    }
+  if (!cards || cards.length < 1) {
+    return null;
+  }
 
-    return (<View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+  const SuitToggle = ({suit}: {suit: SuitsFlagEnum}) => {
+    return (
+      <View>
+        <Text>{suitsFlagToString(suit)}</Text>
+        <Switch
+          trackColor={{true: '#00ff00'}}
+          onValueChange={() => toggleSuit(suit)}
+          value={(filterSuits & suit) > 0}
+        />
+      </View>
+    );
+  };
+
+  return (
+    <View style={{marginBottom: 15}}>
+      <Text style={{textAlign: 'center', fontSize: 16, fontWeight: 'bold'}}>
+        Sort and Filters
+      </Text>
+      <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
         <View>
-            <Text>Sort</Text>
-            <Switch
-                trackColor={{ true: '#00ff00' }}
-                onValueChange={() => setIsSortEnabled(!isSortEnabled)}
-                value={isSortEnabled} />
+          <Text>Sort</Text>
+          <Switch
+            trackColor={{true: '#00ff00'}}
+            onValueChange={() => setIsSortEnabled(!isSortEnabled)}
+            value={isSortEnabled}
+          />
         </View>
-        <View>
-            <Text>Hearts</Text>
-            <Switch
-                trackColor={{ true: '#00ff00' }}
-                onValueChange={() => toggleSuit(SuitsEnum.hearts)}
-                value={(filterSuits & SuitsEnum.hearts) > 0} />
-        </View>
-        <View>
-            <Text>Clubs</Text>
-            <Switch
-                trackColor={{ true: '#00ff00' }}
-                onValueChange={() => toggleSuit(SuitsEnum.clubs)}
-                value={(filterSuits & SuitsEnum.clubs) > 0} />
-        </View>
-        <View>
-            <Text>Diamonds</Text>
-            <Switch
-                trackColor={{ true: '#00ff00' }}
-                onValueChange={() => toggleSuit(SuitsEnum.diamonds)}
-                value={(filterSuits & SuitsEnum.diamonds) > 0} />
-        </View>
-        <View>
-            <Text>Spades</Text>
-            <Switch
-                trackColor={{ true: '#00ff00' }}
-                onValueChange={() => toggleSuit(SuitsEnum.spades)}
-                value={(filterSuits & SuitsEnum.spades) > 0} />
-        </View>
-    </View>)
-}
+        <SuitToggle suit={SuitsFlagEnum.Hearts} />
+        <SuitToggle suit={SuitsFlagEnum.Clubs} />
+        <SuitToggle suit={SuitsFlagEnum.Diamonds} />
+        <SuitToggle suit={SuitsFlagEnum.Spades} />
+      </View>
+    </View>
+  );
+};
 
 export default Toggles;

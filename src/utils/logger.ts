@@ -1,9 +1,9 @@
 const log = (value: any) => {
-    if (__DEV__) {
-        console.log(value);
-    }
-}
+  if (__DEV__) {
+    console.log(value);
+  }
+};
 
 export default {
-    log
-}
+  log,
+};
