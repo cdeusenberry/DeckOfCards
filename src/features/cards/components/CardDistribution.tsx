@@ -8,7 +8,7 @@ const CardDistribution = ({cards}: {cards?: Card[]}) => {
     return null;
   }
 
-  // Object allows for easier incrementing.
+  // Object allows for easier count incrementing.
   const suitCountMap = new Map<SuitsEnum, {count: number}>([
     [SuitsEnum.Hearts, {count: 0}],
     [SuitsEnum.Clubs, {count: 0}],

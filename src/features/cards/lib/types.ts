@@ -20,11 +20,8 @@ export const CardCollection = z.object({
   remaining: z.number(),
 });
 
-export const Deck = z.object({
-  success: z.boolean(),
-  deck_id: z.string(),
+export const Deck = CardCollection.omit({cards: true}).extend({
   shuffled: z.boolean(),
-  remaining: z.number(),
 });
 
 export enum SuitsFlagEnum {
