@@ -1,5 +1,11 @@
 import {z} from 'zod';
 
+export const Suit = z.enum(['HEARTS', 'CLUBS', 'DIAMONDS', 'SPADES']);
+export type Suit = z.infer<typeof Suit>;
+
+export const FaceCard = z.enum(['ACE', 'JACK', 'QUEEN', 'KING']);
+export type FaceCard = z.infer<typeof FaceCard>;
+
 const Card = z.object({
   code: z.string(),
   image: z.string(),
@@ -8,7 +14,7 @@ const Card = z.object({
     png: z.string(),
   }),
   value: z.string(),
-  suit: z.string(),
+  suit: Suit,
 });
 
 export type Card = z.infer<typeof Card>;
@@ -24,17 +30,11 @@ export const Deck = CardCollection.omit({cards: true}).extend({
   shuffled: z.boolean(),
 });
 
-export enum SuitsFlagEnum {
+export enum SuitFlag {
+  None = 0,
   Hearts = 1,
   Clubs = 2,
   Diamonds = 4,
   Spades = 8,
   All = 15,
-}
-
-export enum SuitsEnum {
-  Hearts = 'HEARTS',
-  Clubs = 'CLUBS',
-  Diamonds = 'DIAMONDS',
-  Spades = 'SPADES',
 }

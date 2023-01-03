@@ -5,5 +5,5 @@ export {
   suitsEnumToString,
 } from './helpers';
 export {useDecks, useHand, useReturnHand} from './queries';
-export {SuitsEnum, SuitsFlagEnum} from './types';
+export {Suit, SuitFlag} from './types';
 export type {Card} from './types';

@@ -12,7 +12,7 @@ import {
 
 import {
   Card,
-  SuitsFlagEnum,
+  SuitFlag,
   filterCardsBySuits,
   sortCards,
   useDecks,
@@ -30,7 +30,7 @@ const DeckScreen = () => {
   const [handFetchingEnabled, setHandFetchingEnabled] = useState(false);
   const [hand, setHand] = useState<Card[]>([]);
   const [isSortEnabled, setIsSortEnabled] = useState(false);
-  const [filterSuits, setFilterSuits] = useState(SuitsFlagEnum.All);
+  const [filterSuits, setFilterSuits] = useState(SuitFlag.All);
 
   const {
     data: deck,

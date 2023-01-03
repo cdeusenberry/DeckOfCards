@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Text, View} from 'react-native';
 
-import {Card, SuitsFlagEnum, suitsFlagToString} from '../lib';
+import {Card, SuitFlag, suitsFlagToString} from '../lib';
 
 const Toggles = ({
   cards,
@@ -13,14 +13,14 @@ const Toggles = ({
   cards?: Card[];
   isSortEnabled: boolean;
   setIsSortEnabled: (val: boolean) => void;
-  filterSuits: SuitsFlagEnum;
-  toggleSuit: (val: SuitsFlagEnum) => void;
+  filterSuits: SuitFlag;
+  toggleSuit: (val: SuitFlag) => void;
 }) => {
   if (!cards || cards.length < 1) {
     return null;
   }
 
-  const SuitToggle = ({suit}: {suit: SuitsFlagEnum}) => {
+  const SuitToggle = ({suit}: {suit: SuitFlag}) => {
     return (
       <View>
         <Text>{suitsFlagToString(suit)}</Text>
@@ -47,10 +47,10 @@ const Toggles = ({
             value={isSortEnabled}
           />
         </View>
-        <SuitToggle suit={SuitsFlagEnum.Hearts} />
-        <SuitToggle suit={SuitsFlagEnum.Clubs} />
-        <SuitToggle suit={SuitsFlagEnum.Diamonds} />
-        <SuitToggle suit={SuitsFlagEnum.Spades} />
+        <SuitToggle suit={SuitFlag.Hearts} />
+        <SuitToggle suit={SuitFlag.Clubs} />
+        <SuitToggle suit={SuitFlag.Diamonds} />
+        <SuitToggle suit={SuitFlag.Spades} />
       </View>
     </View>
   );

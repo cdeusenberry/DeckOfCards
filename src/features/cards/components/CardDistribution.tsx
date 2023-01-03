@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-import {Card, SuitsEnum, suitsEnumToString} from '../lib';
+import {Card, Suit, suitsEnumToString} from '../lib';
 
 const CardDistribution = ({cards}: {cards?: Card[]}) => {
   if (!cards || cards.length === 0) {
@@ -9,15 +9,15 @@ const CardDistribution = ({cards}: {cards?: Card[]}) => {
   }
 
   // Object allows for easier count incrementing.
-  const suitCountMap = new Map<SuitsEnum, {count: number}>([
-    [SuitsEnum.Hearts, {count: 0}],
-    [SuitsEnum.Clubs, {count: 0}],
-    [SuitsEnum.Diamonds, {count: 0}],
-    [SuitsEnum.Spades, {count: 0}],
+  const suitCountMap = new Map<Suit, {count: number}>([
+    [Suit.Enum.HEARTS, {count: 0}],
+    [Suit.Enum.CLUBS, {count: 0}],
+    [Suit.Enum.DIAMONDS, {count: 0}],
+    [Suit.Enum.SPADES, {count: 0}],
   ]);
 
   cards.forEach(card => {
-    const counter = suitCountMap.get(card.suit as SuitsEnum);
+    const counter = suitCountMap.get(card.suit);
     if (counter) {
       counter.count++;
     }

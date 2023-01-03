@@ -6,7 +6,7 @@ This is over engineered for what it is, but is an example of one way to structur
 
 ## Sharing code with web
 
-All of the code in _src/features/cards/lib_ should have no dependencies on react native, and could be shared with a web project (probably).
+All of the code in _src/features/cards/lib_ should have no dependencies on react native, and could be shared with a web project (probably). Depending on how sharing is done it could be useful to lift the lib folder up the tree (_src/lib_)
 
 ## Missing
 

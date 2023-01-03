@@ -1,55 +1,55 @@
-import {Card, SuitsFlagEnum, SuitsEnum} from './types';
+import {Card, FaceCard, SuitFlag, Suit} from './types';
 
-export const suitsFlagToString = (suit: SuitsFlagEnum) => {
+export const suitsFlagToString = (suit: SuitFlag) => {
   switch (suit) {
-    case SuitsFlagEnum.Hearts:
+    case SuitFlag.Hearts:
       return 'Hearts';
-    case SuitsFlagEnum.Clubs:
+    case SuitFlag.Clubs:
       return 'Clubs';
-    case SuitsFlagEnum.Diamonds:
+    case SuitFlag.Diamonds:
       return 'Diamonds';
-    case SuitsFlagEnum.Spades:
+    case SuitFlag.Spades:
       return 'Spades';
     default:
       return 'Unknown';
   }
 };
 
-export const suitsEnumToString = (suit: SuitsEnum) => {
+export const suitsEnumToString = (suit: Suit) => {
   switch (suit) {
-    case SuitsEnum.Hearts:
+    case Suit.Enum.HEARTS:
       return 'Hearts';
-    case SuitsEnum.Clubs:
+    case Suit.Enum.CLUBS:
       return 'Clubs';
-    case SuitsEnum.Diamonds:
+    case Suit.Enum.DIAMONDS:
       return 'Diamonds';
-    case SuitsEnum.Spades:
+    case Suit.Enum.SPADES:
       return 'Spades';
     default:
       return 'Unknown';
   }
 };
 
-export const filterCardsBySuits = (cards: Card[], suits: SuitsFlagEnum) => {
-  if (suits === SuitsFlagEnum.All) {
+export const filterCardsBySuits = (cards: Card[], suits: SuitFlag) => {
+  if (suits === SuitFlag.All) {
     return cards;
   }
 
   const validSuits: string[] = [];
-  if (suits & SuitsFlagEnum.Hearts) {
-    validSuits.push(SuitsEnum.Hearts);
+  if (suits & SuitFlag.Hearts) {
+    validSuits.push(Suit.Enum.HEARTS);
   }
 
-  if (suits & SuitsFlagEnum.Clubs) {
-    validSuits.push(SuitsEnum.Clubs);
+  if (suits & SuitFlag.Clubs) {
+    validSuits.push(Suit.Enum.CLUBS);
   }
 
-  if (suits & SuitsFlagEnum.Diamonds) {
-    validSuits.push(SuitsEnum.Diamonds);
+  if (suits & SuitFlag.Diamonds) {
+    validSuits.push(Suit.Enum.DIAMONDS);
   }
 
-  if (suits & SuitsFlagEnum.Spades) {
-    validSuits.push(SuitsEnum.Spades);
+  if (suits & SuitFlag.Spades) {
+    validSuits.push(Suit.Enum.SPADES);
   }
 
   return cards.filter(card => validSuits.includes(card.suit));
@@ -76,11 +76,11 @@ const compareSuits = (a: Card, b: Card) => {
     return 0;
   }
 
-  if (a.suit === SuitsEnum.Hearts) {
+  if (a.suit === Suit.Enum.HEARTS) {
     return -1;
   }
 
-  if (b.suit === SuitsEnum.Hearts) {
+  if (b.suit === Suit.Enum.HEARTS) {
     return 1;
   }
 
@@ -96,19 +96,20 @@ const compareValues = (a: Card, b: Card) => {
 };
 
 const convertValueToNumber = (a: Card) => {
-  if (a.value === 'ACE') {
+  // Going with Ace as 1, could also be 14.
+  if (a.value === FaceCard.Enum.ACE) {
     return 1;
   }
 
-  if (a.value === 'JACK') {
+  if (a.value === FaceCard.Enum.JACK) {
     return 11;
   }
 
-  if (a.value === 'QUEEN') {
+  if (a.value === FaceCard.Enum.QUEEN) {
     return 12;
   }
 
-  if (a.value === 'KING') {
+  if (a.value === FaceCard.Enum.KING) {
     return 13;
   }
 
