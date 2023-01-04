@@ -52,8 +52,13 @@ const getHand = async (deckId: string, count?: number) => {
 
 const returnHand = async (deckId: string) => {
   try {
+    const {data} = await axios.get(`${deckId}/return/`);
+
+    if (!data.success) {
+      throw Error('Failed to return Hand.');
+    }
+
     // Currently no use of the return object here.
-    await axios.get(`${deckId}/return/`);
   } catch (error) {
     logger.log(error);
     throw error;
