@@ -21,7 +21,7 @@ import {
 } from './lib';
 import CardDistribution from './components/CardDistribution';
 import CardList from './components/CardList';
-import FilterToggles from './components/Toggles';
+import FilterToggles from './components/FilterToggles';
 
 const DeckScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
