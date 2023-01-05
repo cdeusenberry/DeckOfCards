@@ -37,10 +37,12 @@ const DeckScreen = () => {
     isLoading: deckLoading,
     refetch: fetchNewDeck,
   } = useDecks({enabled: deckFetchingEnabled});
+
   const {data: cardCollectionData, isLoading: handLoading} = useHand(
     deck?.deck_id || '',
     {enabled: handFetchingEnabled},
   );
+
   const {mutate: returnHand} = useReturnHand();
 
   useEffect(() => {
