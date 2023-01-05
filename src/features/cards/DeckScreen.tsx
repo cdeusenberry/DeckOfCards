@@ -21,7 +21,7 @@ import {
 } from './lib';
 import CardDistribution from './components/CardDistribution';
 import CardList from './components/CardList';
-import Toggles from './components/Toggles';
+import FilterToggles from './components/Toggles';
 
 const DeckScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -110,7 +110,7 @@ const DeckScreen = () => {
         </View>
         {messageText && <Text style={styles.sectionTitle}>{messageText}</Text>}
         <CardDistribution cards={cardCollectionData?.cards} />
-        <Toggles
+        <FilterToggles
           cards={cardCollectionData?.cards}
           isSortEnabled={isSortEnabled}
           setIsSortEnabled={setIsSortEnabled}

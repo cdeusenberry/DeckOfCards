@@ -3,7 +3,7 @@ import {Switch, Text, View} from 'react-native';
 
 import {Card, SuitFlag, suitsFlagToString} from '../lib';
 
-const Toggles = ({
+const FilterToggles = ({
   cards,
   isSortEnabled,
   setIsSortEnabled,
@@ -56,4 +56,4 @@ const Toggles = ({
   );
 };
 
-export default Toggles;
+export default FilterToggles;
