@@ -4,9 +4,9 @@ A little test app for a deck of cards.
 
 This is over engineered for what it is, but is an example of one way to structure a react native app.
 
-## Potential to share code with web
+## Sharing code with
 
-All of the code in _src/features/cards/lib_ should have no dependencies on react native, and could be shared with a web project (testing required). If there ends up being lots of features with many cross referencing lib folders it can make sense to lift the lib folder up the tree and consolidate them (_src/lib/{feature}_).
+This has [DeckOfCardsLib](https://github.com/cdeusenberry/DeckOfCardsLib) as a dependency. That code has zero dependencies on React Native and is also consumed at [DeckOfCardsWeb](https://github.com/cdeusenberry/DeckOfCardsWeb)
 
 ## Missing
 

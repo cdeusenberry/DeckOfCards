@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-import {Card, Suit, suitsEnumToString} from '../lib';
+import {Card, Suit, suitsEnumToString} from 'deckofcardslib';
 
 const CardDistribution = ({cards}: {cards?: Card[]}) => {
   if (!cards || cards.length === 0) {

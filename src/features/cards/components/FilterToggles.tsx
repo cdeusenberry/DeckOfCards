@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Text, View} from 'react-native';
 
-import {Card, SuitFlag, suitsFlagToString} from '../lib';
+import {Card, SuitFlag, suitsFlagToString} from 'deckofcardslib';
 
 const FilterToggles = ({
   cards,

@@ -18,7 +18,7 @@ import {
   useDecks,
   useHand,
   useReturnHand,
-} from './lib';
+} from 'deckofcardslib';
 import CardDistribution from './components/CardDistribution';
 import CardList from './components/CardList';
 import FilterToggles from './components/FilterToggles';
